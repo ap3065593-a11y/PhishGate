@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Odisha - PhishGate</title>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; text-align: center; scroll-behavior: smooth; }
+        .header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/static/bg.jpg'); background-size: cover; background-attachment: fixed; }
+        .btn-main { padding: 18px 40px; background: #ff9933; color: white; text-decoration: none; font-weight: bold; border-radius: 50px; font-size: 22px; box-shadow: 0 0 25px #ff9933; transition: 0.3s; border: 2px solid white; }
+        .btn-main:hover { transform: scale(1.1); background: #ffffff; color: #ff9933; box-shadow: 0 0 40px white; }
+        .section { padding: 80px 20px; border-bottom: 2px solid #222; background: #0a0a0a; }
+        /* Mobile ke liye image ko responsive banaya */
+        .section img { width: 100%; max-width: 900px; height: auto; border-radius: 20px; box-shadow: 0 10px 40px rgba(255, 153, 51, 0.2); border: 1px solid #333; transition: 0.5s; }
+        .section h2 { color: #ff9933; font-size: 45px; margin-bottom: 15px; text-transform: uppercase; }
+        
+        /* Choti screen ke liye font thoda adjust hoga */
+        @media (max-width: 600px) {
+            .section h2 { font-size: 30px; }
+            .header h1 { font-size: 40px !important; }
+        }
+
+        .section p { font-size: 20px; color: #bbb; max-width: 800px; margin: 0 auto 30px; line-height: 1.6; }
+        .footer { padding: 40px; background: #000; color: #bbb; font-size: 16px; border-top: 1px solid #222; }
+        
+        /* Nav bar mobile-friendly banaya (flex-wrap add kiya) */
+        nav { 
+            background: rgba(255, 153, 51, 0.9); 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-around; 
+            flex-wrap: wrap; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
+        nav a { transition: 0.3s; border-radius: 5px; color: black; text-decoration: none; font-weight: bold; font-size: 18px; padding: 5px 10px; }
+        nav a:hover { background: white; color: #ff9933 !important; }
+        
+        .helpline-link { color: #b00000; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .helpline-link:hover { text-decoration: underline; color: #000; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">🏠 HOME</a>
+        <a href="/quiz">📝 QUIZ</a>
+        <a href="/game">🎮 GAME</a>
+        <a href="/awareness">📢 AWARENESS</a>
+        <a href="/admin">📊 HISTORY</a>
+    </nav>
+
+    <div class="header">
+        <h1 style="font-size: 60px; margin-bottom: 10px;">ODISHA HERITAGE</h1>
+        <p style="font-size: 24px; margin-bottom: 40px; color: #ff9933;"> ମନ୍ଦିରମାଳିନୀ ଓଡ଼ିଶାକୁ ଆପଣଙ୍କୁ ସ୍ୱାଗତ |</p>
+        <a href="/scanner" class="btn-main">🛡️ GO TO CYBER SCANNER</a>
+        <p style="margin-top: 50px; color: #888;">Scroll down to see the beauty of Odisha ↓</p>
+    </div>
+
+    <div class="section">
+        <h2>Konark Sun Temple</h2>
+        <img src="/static/konark.jpg" alt="Konark">
+    </div>
+
+    <div class="section">
+        <h2>Puri Jagannath Temple</h2>
+        <img src="/static/puri.jpg" alt="Puri">
+    </div>
+
+    <div class="section">
+        <h2>Hirakud Dam</h2>
+        <img src="/static/hirakud.jpg" alt="Hirakud">
+    </div>
+
+    <div class="section">
+        <h2>Odisha Famous Pakhala</h2>
+        <img src="/static/pakhala.jpg" alt="Pakhala">
+    </div>
+
+    <div class="section">
+        <h2>Odisha Cyber Security</h2>
+        <img src="/static/police.jpg" alt="Odisha Police Cyber Security">
+    </div>
+
+    <div class="section" style="background: #b00000; border: none; margin: 40px 20px; border-radius: 20px;">
+        <h2 style="color: white;">🚨 CYBER HELPLINE ODISHA</h2>
+        <p style="color: #ffcccc;">If you are a victim of cyber crime, call immediately:</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding-bottom: 30px;">
+            <div style="background: white; color: #b00000; padding: 20px; border-radius: 15px; min-width: 200px;">
+                <h3 style="margin:0;">National Number</h3>
+                <h1 style="margin:10px 0;"><a href="tel:1930" style="color: #b00000; text-decoration: none;">1930</a></h1>
+            </div>
+            <div style="background: white; color: #b00000; padding: 20px; border-radius: 15px; min-width: 200px;">
+                <h3 style="margin:0;">Online Portal</h3>
+                <p style="margin: 10px 0;">
+                    <a href="https://cybercrime.gov.in" target="_blank" class="helpline-link">cybercrime.gov.in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Developed with ❤️ by <br>
+        <b style="color: #ff9933; font-size: 18px;">Jagjit Mishra, Shreyas Panda, Aryan Bisi, Sameer Patel & Vishaljeet Sahoo</b> <br>
+        PhishGate Project 2026
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Quiz - Surakhya Kavach</title>
+    <style>
+        body { background: #000; color: #27ae60; font-family: 'Courier New', monospace; text-align: center; margin: 0; padding: 0; }
+        
+        /* Mobile responsive container */
+        .quiz-container { 
+            max-width: 600px; 
+            width: 90%; 
+            margin: 30px auto; 
+            padding: 20px; 
+            border: 2px solid #27ae60; 
+            border-radius: 15px; 
+            box-shadow: 0 0 20px #27ae60; 
+            background: rgba(0,0,0,0.8);
+        }
+        
+        /* Options ko mobile touch ke liye set kiya */
+        .option { 
+            display: block; 
+            width: 100%; 
+            padding: 15px; 
+            margin: 12px 0; 
+            background: #111; 
+            color: #fff; 
+            border: 1px solid #27ae60; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        .option:hover { background: #27ae60; color: #000; }
+        
+        #result { display: none; font-size: 20px; margin-top: 20px; }
+        .btn-back { 
+            display: inline-block; 
+            margin-top: 15px; 
+            color: #ff9933; 
+            text-decoration: none; 
+            border: 1px solid #ff9933; 
+            padding: 12px 25px; 
+            border-radius: 5px; 
+            font-weight: bold;
+        }
+
+        /* Choti screen ke liye font adjustment */
+        @media (max-width: 600px) {
+            h1 { font-size: 22px; }
+            #question { font-size: 18px; }
+            .option { font-size: 14px; padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>🛡️ CYBER QUIZ (10 Questions)</h1>
+        <hr color="#27ae60">
+        <div id="quiz-box">
+            <h3 id="question">Question loading...</h3>
+            <div id="options"></div>
+            <p style="margin-top: 20px; font-weight: bold;">Question <span id="q-num">1</span> of 10</p>
+        </div>
+
+        <div id="result">
+            <h2>🎉 Quiz Completed!</h2>
+            <p id="score-text"></p>
+            <p id="percent-text"></p>
+            <div id="rank" style="font-weight: bold; font-size: 24px; margin-bottom: 20px;"></div>
+            <a href="/quiz" class="btn-back">🔄 Restart Quiz</a><br>
+            <a href="/" class="btn-back" style="color: #fff; border-color: #fff;">🏠 Go Home</a>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "ATM ka PIN kitne digit ka hota hai?", o: ["4", "6", "8", "10"], a: 0 },
+            { q: "Cyber Crime helpline number kya hai?", o: ["100", "1930", "1098", "101"], a: 1 },
+            { q: "Strong password mein kya hona chahiye?", o: ["Sirf naam", "Sirf number", "Letters, Numbers & Symbols", "123456"], a: 2 },
+            { q: "Anjaan link par click karna chahiye?", o: ["Haan", "Nahi", "Sirf dosto ke link pe", "Pata nahi"], a: 1 },
+            { q: "Public Wi-Fi par banking karni chahiye?", o: ["Haan", "Safe hai", "Bilkul nahi", "Kabhi kabhi"], a: 2 },
+            { q: "HTTP aur HTTPS mein se kaunsa safe hai?", o: ["HTTP", "HTTPS", "Dono", "Koi nahi"], a: 1 },
+            { q: "OTP kisi ko share karna chahiye?", o: ["Bank manager ko", "Police ko", "Kisi ko nahi", "Dosto ko"], a: 2 },
+            { q: "Phishing ka matlab kya hai?", o: ["Machli pakadna", "Data chori karna", "Game khelna", "Software update"], a: 1 },
+            { q: "Computer ko virus se bachane ke liye kya chahiye?", o: ["Antivirus", "Google Chrome", "VLC Player", "MS Office"], a: 0 },
+            { q: "Two-Factor Authentication (2FA) kya karta hai?", o: ["Phone fast karta hai", "Extra security deta hai", "Battery bachata hai", "Internet speed badhata hai"], a: 1 }
+        ];
+
+        let currentQ = 0; let score = 0;
+
+        function loadQuestion() {
+            if(currentQ < questions.length) {
+                document.getElementById('q-num').innerText = currentQ + 1;
+                document.getElementById('question').innerText = questions[currentQ].q;
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = '';
+                questions[currentQ].o.forEach((opt, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option';
+                    btn.innerText = opt;
+                    btn.onclick = () => checkAnswer(i);
+                    optionsDiv.appendChild(btn);
+                });
+            } else {
+                showResult();
+            }
+        }
+
+        function checkAnswer(i) {
+            if(i === questions[currentQ].a) score++;
+            currentQ++;
+            loadQuestion();
+        }
+
+        function showResult() {
+            document.getElementById('quiz-box').style.display = 'none';
+            const res = document.getElementById('result');
+            res.style.display = 'block';
+            let percent = (score / 10) * 100;
+            document.getElementById('score-text').innerText = "Score: " + score + " / 10";
+            document.getElementById('percent-text').innerText = "Percentage: " + percent + "%";
+            document.getElementById('rank').innerText = percent >= 70 ? "🏆 Rank: Cyber Expert" : "🛡️ Rank: Needs Learning";
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

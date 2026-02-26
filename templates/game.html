@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hacker Shield Game</title>
+    <style>
+        body { background: #000; color: #0f0; text-align: center; overflow: hidden; font-family: sans-serif; margin: 0; padding: 0; }
+        /* Mobile par canvas responsive rahega */
+        #gameCanvas { 
+            border: 2px solid #0f0; 
+            background: #050505; 
+            cursor: none; 
+            margin-top: 10px; 
+            max-width: 95%; 
+            height: auto; 
+            touch-action: none; /* Touch scroll band karne ke liye */
+        }
+        .ui { padding: 10px; font-size: 20px; }
+        .exit-btn {
+            display: inline-block;
+            color: #fff; 
+            text-decoration: none; 
+            border: 1px solid #fff; 
+            padding: 10px 20px; 
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui">Shield Power: <span id="score">0</span></div>
+    <h3 style="color: #ff9933; margin: 5px;">🛡️ Hacker Attack: Protect the Core!</h3>
+    <canvas id="gameCanvas"></canvas>
+    <p style="font-size: 14px;">Virus (Red) se bacho, Green points pakdo!</p>
+    <a href="/" class="exit-btn">🏠 Exit Game</a>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Mobile screen ke liye canvas size adjust
+        canvas.width = window.innerWidth < 800 ? window.innerWidth - 20 : 800;
+        canvas.height = 450;
+
+        let player = { x: canvas.width/2, y: canvas.height/2, r: 15 };
+        let enemies = []; let points = []; let score = 0; let gameOver = false;
+
+        // MOUSE CONTROL
+        window.onmousemove = (e) => {
+            let rect = canvas.getBoundingClientRect();
+            player.x = e.clientX - rect.left;
+            player.y = e.clientY - rect.top;
+        };
+
+        // TOUCH CONTROL (Mobile ke liye extra add kiya)
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            let rect = canvas.getBoundingClientRect();
+            let touch = e.touches[0];
+            player.x = touch.clientX - rect.left;
+            player.y = touch.clientY - rect.top;
+        }, { passive: false });
+
+        function spawn() {
+            if(Math.random() < 0.05) enemies.push({x: Math.random()*canvas.width, y: -20, s: 3 + Math.random()*3});
+            if(Math.random() < 0.02) points.push({x: Math.random()*canvas.width, y: -20, s: 2});
+        }
+
+        function update() {
+            if(gameOver) return;
+            enemies.forEach((en, i) => {
+                en.y += en.s;
+                let dist = Math.hypot(player.x - en.x, player.y - en.y);
+                if(dist < player.r + 10) { 
+                    gameOver = true; 
+                    alert("GAME OVER! Score: " + score); 
+                    location.reload(); 
+                }
+                if(en.y > canvas.height) enemies.splice(i, 1);
+            });
+            points.forEach((p, i) => {
+                p.y += p.s;
+                let dist = Math.hypot(player.x - p.x, player.y - p.y);
+                if(dist < player.r + 10) { 
+                    points.splice(i, 1); 
+                    score += 10; 
+                    document.getElementById('score').innerText = score; 
+                }
+                if(p.y > canvas.height) points.splice(i, 1);
+            });
+            spawn(); draw(); requestAnimationFrame(update);
+        }
+
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle = '#0f0'; ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = 'red'; enemies.forEach(en => ctx.fillRect(en.x, en.y, 20, 20));
+            ctx.fillStyle = '#ff9933'; points.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, 8, 0, Math.PI*2); ctx.fill(); });
+        }
+        update();
+    </script>
+</body>
+</html>

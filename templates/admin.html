@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cyber Surakhya</title>
+    <style>
+        body { margin: 0; background: #000; color: #0f0; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+        canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.3; }
+        .dashboard { max-width: 1100px; margin: 20px auto; background: rgba(0, 20, 0, 0.9); padding: 20px; border-radius: 15px; border: 1px solid #0f0; box-shadow: 0 0 20px rgba(0, 255, 0, 0.2); }
+        h1 { text-align: center; color: #ff9933; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; }
+        
+        /* Mobile ke liye stats-row ko responsive banaya */
+        .stats-row { display: flex; justify-content: space-around; margin-bottom: 30px; flex-wrap: wrap; gap: 10px; }
+        .stat-card { background: #111; padding: 15px; border-radius: 10px; border: 1px solid #333; text-align: center; min-width: 120px; flex: 1; }
+        .stat-card h3 { margin: 0; color: #888; font-size: 12px; }
+        .stat-card p { font-size: 20px; font-weight: bold; margin: 10px 0 0; color: #0f0; }
+        
+        /* Table ko mobile par scroll karne ke liye wrapper */
+        .table-container { width: 100%; overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; background: #050505; min-width: 600px; }
+        
+        th { background: #ff9933; color: black; padding: 12px; text-transform: uppercase; font-size: 14px; }
+        td { padding: 12px; border-bottom: 1px solid #222; text-align: center; color: #ccc; font-size: 14px; }
+        .badge { padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; }
+        .safe { background: #27ae60; color: white; }
+        .unsafe { background: #e74c3c; color: white; }
+        .btn-home { text-decoration: none; color: black; background: #ff9933; padding: 8px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            .dashboard { margin: 10px; padding: 15px; }
+            h1 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <a href="/" class="btn-home">🏠 HOME</a>
+            <h1>🛡️ SYSTEM LOGS</h1>
+            <div style="width: 50px;" class="hide-mobile"></div>
+        </div>
+        
+        <div class="stats-row">
+            <div class="stat-card"><h3>TOTAL SCANS</h3><p>{{ history|length }}</p></div>
+            <div class="stat-card"><h3>THREATS</h3><p style="color: #e74c3c;">{{ history|selectattr(2, 'equalto', 'UNSAFE')|list|length }}</p></div>
+            <div class="stat-card"><h3>STATUS</h3><p style="color: #27ae60;">ACTIVE</p></div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DOMAIN</th>
+                        <th>RESULT</th>
+                        <th>SCORE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in history %}
+                    <tr>
+                        <td>#{{ row[0] }}</td>
+                        <td style="color: #0f0; word-break: break-all;">{{ row[1] }}</td>
+                        <td><span class="badge {% if row[2] == 'SAFE' %}safe{% else %}unsafe{% endif %}">{{ row[2] }}</span></td>
+                        <td>{{ row[3] }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const alphabet = "01";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = Array.from({ length: columns }).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0"; ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
+                rainDrops[i]++;
+            }
+        }
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        setInterval(draw, 30);
+    </script>
+</body>
+</html>

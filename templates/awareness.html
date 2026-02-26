@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Awareness - PhishGate</title>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: white; line-height: 1.6; scroll-behavior: smooth; }
+        .header-bg { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/static/police.jpg'); background-size: cover; padding: 100px 20px; text-align: center; border-bottom: 3px solid #ff9933; }
+        
+        /* Mobile responsive container */
+        .content-container { max-width: 1000px; margin: -60px auto 50px; background: #111; padding: 40px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 0 40px rgba(255,153,51,0.2); }
+        
+        h1, h2, h3 { color: #ff9933; text-transform: uppercase; }
+        .topic-box { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        .odia-text { font-size: 21px; color: #eee; margin-bottom: 15px; border-left: 5px solid #ff9933; padding-left: 20px; text-align: justify; }
+        .eng-text { font-size: 18px; color: #aaa; font-style: italic; margin-bottom: 20px; display: block; }
+        
+        .nav-btn { display: inline-block; padding: 12px 25px; background: #ff9933; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; margin-bottom: 20px; transition: 0.3s; }
+        .nav-btn:hover { background: white; transform: scale(1.05); }
+        
+        .warning-box { background: rgba(192, 57, 43, 0.1); border: 1px dashed #c0392b; padding: 20px; border-radius: 10px; margin: 20px 0; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { background: #1a1a1a; margin: 10px 0; padding: 15px; border-radius: 8px; border-left: 4px solid #27ae60; }
+
+        /* MOBILE SPECIFIC CSS - Isse mobile par crash nahi hoga */
+        @media (max-width: 600px) {
+            .header-bg { padding: 60px 10px; }
+            .header-bg h1 { font-size: 30px !important; }
+            .content-container { margin: -30px 10px 30px; padding: 20px; }
+            .odia-text { font-size: 18px; padding-left: 10px; }
+            .eng-text { font-size: 16px; }
+            h2 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bg">
+        <a href="/" class="nav-btn">🏠 BACK TO HOME</a>
+        <h1 style="font-size: 50px; margin: 0;">ସାଇବର ସଚେତନତା (Cyber Awareness)</h1>
+        <p style="font-size: 22px; color: #ff9933;">"ସତର୍କ ରୁହନ୍ତୁ, ସୁରକ୍ଷିତ ରୁହନ୍ତୁ"</p>
+    </div>
+
+    <div class="content-container">
+        
+        <div class="topic-box">
+            <h2>୧. ସାଇବର ଅପରାଧ ର ବିଭିନ୍ନ ରୂପ (Types of Cyber Crimes)</h2>
+            <div class="odia-text">
+                <b>ଆର୍ଥିକ ଠକେଇ (Financial Fraud):</b> ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ଆକାଉଣ୍ଟ ରୁ ଅଜାଣତରେ ଟଙ୍କା ଚୋରି କରିବା।<br>
+                <b>ଡାଟା ଚୋରି (Identity Theft):</b> ଆପଣଙ୍କ ନାମ ଏବଂ ଫଟୋ ବ୍ୟବହାର କରି କିଏ ନକଲି ଆକାଉଣ୍ଟ ଖୋଲିବା।<br>
+                <b>ସାଇବର ବୁଲିଙ୍ଗ (Cyber Bullying):</b> ଇଣ୍ଟରନେଟ୍ ମାଧ୍ୟମରେ କାହାକୁ ମାନସିକ ନିର୍ଯାତନା ଦେବା ବା ଧମକାଇବା।
+            </div>
+            <span class="eng-text">Includes Financial fraud, Identity theft, and Cyberbullying via digital platforms.</span>
+        </div>
+
+        <div class="topic-box">
+            <h2>୨. ପ୍ରଚଳିତ ସାଇବର ଠକେଇ ର କୌଶଳ (Common Scam Tactics)</h2>
+            <div class="odia-text">
+                <b>କେୱାଇସି (KYC Update):</b> ବ୍ୟାଙ୍କ ନାମରେ ମେସେଜ୍ ଆସିବ କି KYC ଅପଡେଟ୍ ନକଲେ ଆକାଉଣ୍ଟ ବନ୍ଦ ହୋଇଯିବ। ଏହା ଏକ ସ୍କାମ୍।<br>
+                <b>ଲଟେରୀ ସ୍କାମ୍ (Lottery/Gift):</b> ଆପଣ ବଡ଼ ପୁରସ୍କାର ଜିତିଛନ୍ତି କହି କିଛି ଟଙ୍କା ଡିପୋଜିଟ୍ ମାଗିବେ।<br>
+                <b>ଅନଲାଇନ୍ ଚାକିରି (Job Fraud):</b> ବିନା ପରୀକ୍ଷାରେ ବଡ଼ ଚାକିରି ର ଲୋଭ ଦେଖାଇ ରେଜିଷ୍ଟ୍ରେସନ ଫି ମାଗିବା।
+            </div>
+            <span class="eng-text">Scammers use KYC updates, fake lottery wins, and work-from-home job offers to trap victims.</span>
+        </div>
+
+        <div class="topic-box">
+            <h2>୩. ସୋସିଆଲ ମିଡିଆ ସୁରକ୍ଷା (Social Media Safety)</h2>
+            <div class="odia-text">
+                - ଆପଣଙ୍କ ପ୍ରୋଫାଇଲ୍ କୁ 'Private' ରଖନ୍ତୁ।<br>
+                - ଅଜଣା ବ୍ୟକ୍ତିଙ୍କ 'Friend Request' ଗ୍ରହଣ କରନ୍ତୁ ନାହିଁ।<br>
+                - କୌଣସି ଆପତ୍ତିଜନକ ଲିଙ୍କ୍ କିମ୍ବା ଭିଡିଓ ସେୟାର କରନ୍ତୁ ନାହିଁ।<br>
+                - ମନେରଖନ୍ତୁ, ଇଣ୍ଟରନେଟ୍ ରେ କୌଣସି ଜିନିଷ ସମ୍ପୂର୍ଣ୍ଣ ଭାବେ ଡିଲିଟ୍ ହୁଏ ନାହିଁ।
+            </div>
+            <span class="eng-text">Keep profiles private, avoid unknown friend requests, and be careful about what you share online.</span>
+        </div>
+
+        <div class="topic-box">
+            <h2>୪. ମୋବାଇଲ୍ ଆପ୍ ବ୍ୟବହାର ସମୟରେ ସତର୍କତା (Mobile App Safety)</h2>
+            <div class="odia-text">
+                - କେବଳ Google Play Store କିମ୍ବା Apple App Store ରୁ ଆପ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ।<br>
+                - ଆପ୍ ଇନଷ୍ଟଲ୍ କରିବା ସମୟରେ 'Permissions' (Camera, Contacts, Gallery) କୁ ଭଲ ଭାବେ ଯାଞ୍ଚ କରନ୍ତୁ।<br>
+                - ଅଦରକାରୀ ଆପ୍ କୁ ମୋବାଇଲ୍ ରୁ ଡିଲିଟ୍ କରିଦିଅନ୍ତୁ।
+            </div>
+            <span class="eng-text">Download apps only from official stores and check permissions carefully before clicking 'Allow'.</span>
+        </div>
+
+        <div class="topic-box">
+            <h2>୫. ଦୈନନ୍ଦିନ ସୁରକ୍ଷା ଚେକଲିଷ୍ଟ (Daily Safety Checklist)</h2>
+            <ul class="checklist">
+                <li>✅ <b>Password:</b> ପ୍ରତି ୩ ମାସରେ ପାସୱାର୍ଡ ବଦଳାନ୍ତୁ।</li>
+                <li>✅ <b>Update:</b> ମୋବାଇଲ୍ ସଫ୍ଟୱେର୍ କୁ ସବୁବେଳେ ଅପଡେଟ୍ ରଖନ୍ତୁ।</li>
+                <li>✅ <b>2-Step Verification:</b> WhatsApp ଏବଂ Facebook ରେ 2-step verification ଚାଲୁ କରନ୍ତୁ।</li>
+                <li>✅ <b>Public Wi-Fi:</b> ରେଳଷ୍ଟେସନ ବା ମଲ୍ ର Wi-Fi ରେ କେବେବି ବ୍ୟାଙ୍କିଙ୍ଗ କରନ୍ତୁ ନାହିଁ।</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3 style="color: #e74c3c; margin-top: 0;">🚨 ସାବଧାନ (WARNING)</h3>
+            <p style="margin-bottom: 0; font-size: 18px;">
+                କୌଣସି ବ୍ୟାଙ୍କ କିମ୍ବା ସରକାରୀ ସଂସ୍ଥା କେବେବି ଆପଣଙ୍କୁ ଫୋନ୍ କରି <b>OTP</b> ବା <b>Password</b> ମାଗନ୍ତି ନାହିଁ। ଯଦି କିଏ ମାଗୁଛି, ସେ ଜଣେ ଠକ।
+            </p>
+        </div>
+
+        <div class="tip-card" id="helpline" style="background: #1a1a1a; padding: 20px; border-radius: 10px; border: 1px solid #ff9933; margin-top: 20px;">
+            <h3 style="margin-top:0; color: #ff9933;">📞 ସହାୟତା ପାଇଁ ଯୋଗାଯୋଗ କରନ୍ତୁ:</h3>
+            <p style="font-size: 22px; font-weight: bold; margin: 10px 0;">National Helpline: 1930</p>
+            <p>Portal: <a href="https://cybercrime.gov.in" target="_blank" style="color: #ff9933;">cybercrime.gov.in</a></p>
+            <p style="font-size: 16px; border-top: 1px solid #333; padding-top: 10px; color: #bbb;">
+                ଓଡ଼ିଶା ପୋଲିସ୍ ସାଇବର ସେଲ୍ ଆପଣଙ୍କ ସୁରକ୍ଷା ପାଇଁ ସଦା ସର୍ବଦା ପ୍ରସ୍ତୁତ।
+            </p>
+        </div>
+
+    </div>
+
+    <div style="text-align: center; padding: 40px; color: #555; background: #000;">
+        <b>PhishGate Project - Odisha 2026</b><br>
+        Developed for Public Awareness & Digital Safety
+    </div>
+
+</body>
+</html>
